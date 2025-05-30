@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electropress</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #e65100;
+      --accent-color: #FF5C00;
+      --text-color: #000000;
+      --background-color: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+    header {
+      background-color: #fff;
+      text-align: center;
+      padding: 60px 40px; /* Increased padding */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3.5em;
+      color: var(--accent-color);
+    }
+
+    nav {
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      position: relative;
+      z-index: 1000;
+    }
+
+    nav a, .dropbtn {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 20px;
+      transition: background-color 0.3s, transform 0.2s;
+      cursor: pointer;
+      display: inline-block;
+      user-select: none;
+    }
+
+    nav a:hover, .dropbtn:hover {
+      background-color: var(--primary-color);
+      transform: scale(1.05);
+    }
+
+    /* Dropdown container */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropdown menu */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #111;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      border-radius: 8px;
+      top: 40px;
+      left: 0;
+      z-index: 2000;
+    }
+
+    /* Dropdown links */
+    .dropdown-content a {
+      color: #fff;
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      font-weight: normal;
+      margin: 0;
+      border-radius: 0;
+    }
+
+    .dropdown-content a:hover {
+      background-color: var(--accent-color);
+      color: #000;
+    }
+
+    /* Show dropdown on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .container {
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .article {
+      flex: 1 1 300px;
+      max-width: 350px;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      background-color: #fff;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .article:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .article h2 {
+      margin: 10px 0;
+      color: var(--accent-color);
+    }
+
+    .article img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .newsletter {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background-color: #fff;
+      border-top: 1px solid #ddd;
+      padding: 40px;
+      gap: 40px;
+    }
+
+    .newsletter > div {
+      flex: 1 1 300px;
+    }
+
+    .newsletter h3 {
+      color: var(--accent-color);
+    }
+
+    .newsletter input, .newsletter select, .newsletter button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .newsletter button {
+      background-color: var(--accent-color);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter button:hover {
+      background-color: var(--primary-color);
+    }
+
+    .contact-section {
+      background-color: #f9f9f9;
+      padding: 60px 20px;
+    }
+
+    .contact-section h2 {
+      color: var(--accent-color);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-form {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 14px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .contact-form button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: var(--primary-color);
+    }
+
+    .social-icons {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      color: #fff;
+      font-size: 1.4em;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--accent-color);
+    }
+
+    footer {
+      background-color: #000;
+      color: #fff;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-top {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .footer-top h3 {
+      color: var(--accent-color);
+    }
+
+    .footer-top p {
+      margin: 6px 0;
+    }
+
+    .footer-note {
+      font-style: italic;
+      color: var(--accent-color);
+      margin-top: 30px;
+      font-size: 1em;
+    }
+
+    .copyright-box {
+      background-color: #111;
+      padding: 15px;
+      color: #e65100;
+      text-align: center;
+      font-size: 0.9em;
+      border-top: 1px solid #333;
+    }
+
+    /* Animations */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    [data-animate].active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Electropress</h1>
+  <p style="font-size: 1.1em; color: #555; margin-top: 10px;">Monthly insights & inspirations in Engineering</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+
+  <div class="dropdown">
+    <a href="#" class="dropbtn">News <i class="fa fa-caret-down"></i></a>
+    <div class="dropdown-content">
+      <a href="#">Latest</a>
+      <a href="#">Opinions</a>
+      <a href="#">Course-talk</a>
+      <a href="#">How it's made</a>
+      <a href="#">Misc.</a>
+    </div>
+  </div>
+
+  <a href="digital_content.html">Digital Content</a>
+  <a href="#">Projects</a>
+  <a href="#footer" id="about-link">About</a>
+</nav>
+<main>
+  <h2 style="text-align: center; color: #e65100;">June 2025 issue</h2>
+</main>
+<footer id="footer">
+  <div class="footer-top">
+    <h3>Contact Us</h3>
+    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+    <p><strong>Email:</strong> editorial@electropress.com</p>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+    <div class="footer-note">
+      An independent publication by the EEE enthusiasts at AUST<br />
+      A ROYAL BENGAL INITIATIVE
+    </div>
+  </div>
+</footer>
+
+<div class="copyright-box">
+  &copy; 2025 Electropress | Made for engineers, by engineers
+</div>
+
+<script>
+  // Scroll-based animation
+  const elements = document.querySelectorAll('[data-animate]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  elements.forEach(el => observer.observe(el));
+
+  document.getElementById('about-link').addEventListener('click', function(e) {
+    e.preventDefault();
+    const footer = document.getElementById('footer');
+    footer.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>

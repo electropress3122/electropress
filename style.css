@@ -1,0 +1,191 @@
+/* Global Theme */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  color: #000;
+  line-height: 1.6;
+}
+
+a {
+  color: #FF6B00;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+.site-header {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+.tagline {
+  color: #ccc;
+  font-size: 1em;
+  margin-top: 5px;
+}
+
+.nav-links {
+  margin-top: 15px;
+}
+
+.nav-links a {
+  margin: 0 12px;
+  color: #FF6B00;
+  font-weight: bold;
+}
+
+/* Main Content */
+.main-content {
+  padding: 40px 20px;
+}
+
+.news-section {
+  margin-bottom: 40px;
+}
+
+.news-section h2 {
+  color: #FF6B00;
+  border-bottom: 2px solid #FF6B00;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.news-article {
+  margin-bottom: 20px;
+}
+
+.news-article h3 {
+  margin: 0 0 10px;
+  font-size: 1.4em;
+  color: #000;
+}
+
+.news-article p {
+  margin: 0;
+  color: #444;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #111;
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-links,
+.footer-copy,
+.footer-social {
+  flex: 1 1 200px;
+  margin-bottom: 15px;
+}
+
+.menu-btn {
+  color: white;
+  margin-right: 15px;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footer-social img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+}
+
+.footer-social a:hover img {
+  transform: scale(1.2);
+  filter: invert(69%) sepia(92%) saturate(3773%) hue-rotate(3deg) brightness(100%) contrast(105%);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #FF6B00;
+  font-size: 2rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 20px 15px;
+    text-align: left;
+    position: relative;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #000;
+    margin-top: 10px;
+    padding: 10px 0;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    margin: 10px 15px;
+    font-size: 1rem;
+    border-bottom: 1px solid #222;
+    padding-bottom: 8px;
+  }
+
+  .main-content {
+    padding: 20px 15px;
+  }
+
+  .news-article h3 {
+    font-size: 1.2em;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-links, .footer-copy, .footer-social {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-social img {
+    width: 20px;
+    height: 20px;
+  }
+}
